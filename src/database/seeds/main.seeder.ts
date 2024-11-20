@@ -19,7 +19,7 @@ export class MainSeeder implements Seeder {
         console.log('Seeding machine-data...');
         const machineDataFactory = factoryManager.get(MachineData);
         const machineDataItems = await Promise.all(
-            Array(50)
+            Array(1000)
                 .fill('')
                 .map(async () => {
                     const machineData = await machineDataFactory.make({
