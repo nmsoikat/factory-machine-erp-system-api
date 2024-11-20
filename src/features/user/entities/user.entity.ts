@@ -1,5 +1,5 @@
 import { Exclude } from "class-transformer";
-import { MachineData } from "features/machine-data/entities/machine-data.entity";
+import { MachineData } from "../../machine-data/entities/machine-data.entity";
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('users')
@@ -23,10 +23,10 @@ export class User {
     @Column()
     password: string;
 
-    @Column()
+    @Column({ nullable: true })
     last_login: Date;
 
-    @Column()
+    @Column({ nullable: true })
     last_pass_update: Date;
 
     @CreateDateColumn()

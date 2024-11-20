@@ -23,9 +23,11 @@
     "migration:generate": "typeorm migration:generate -d dist/database/data-source -p",
     "premigration:run": "npm run build",
     "migration:run": "typeorm migration:run -d dist/database/data-source",
-    "migration:revert": "typeorm migration:revert -d dist/database/data-source"
+    "migration:revert": "typeorm migration:revert -d dist/database/data-source",
+    "seeder": "ts-node src/database/seeds/seed.ts"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.2.0",
     "@nestjs/common": "^10.0.0",
     "@nestjs/config": "^3.3.0",
     "@nestjs/core": "^10.0.0",
@@ -34,10 +36,12 @@
     "@nestjs/typeorm": "^10.0.2",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
+    "moment": "^2.30.1",
     "mysql2": "^3.11.4",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
-    "typeorm": "^0.3.20"
+    "typeorm": "^0.3.20",
+    "typeorm-extension": "^3.6.3"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
@@ -49,6 +53,8 @@
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
+    "dotenv": "^16.4.5",
+    "dotenv-expand": "^12.0.1",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",

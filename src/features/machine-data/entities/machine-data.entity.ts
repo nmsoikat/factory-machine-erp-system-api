@@ -1,6 +1,8 @@
-import { User } from "features/user/entities/user.entity";
-import { Machine } from "features/machine/entities/machine.entity";
+import { User } from "../../user/entities/user.entity";
+import { Machine } from "../../machine/entities/machine.entity";
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { MachineDataQA } from "../enums/machine-data-qa.enum";
+import * as moment from "moment";
 
 @Entity('machine_data')
 export class MachineData {
@@ -13,23 +15,48 @@ export class MachineData {
     @ManyToOne(() => User, (user) => user.machine_data)
     user_id: User;
 
-    @Column()
-    date: string;
+    @Column({ default: moment(new Date()).format("YYYY-MM-DD HH:mm:ss") })
+    date: Date;
 
-    @Column()
-    q1: string;
+    @Column({
+        type: 'enum',
+        enum: MachineDataQA,
+        default: MachineDataQA.NOT,
+        enumName: 'machine_data_qa_enum'
+    })
+    q1: MachineDataQA;
 
-    @Column()
-    q2: string;
+    @Column({
+        type: 'enum',
+        enum: MachineDataQA,
+        default: MachineDataQA.NOT,
+        enumName: 'machine_data_qa_enum'
+    })
+    q2: MachineDataQA;
 
-    @Column()
-    q3: string;
+    @Column({
+        type: 'enum',
+        enum: MachineDataQA,
+        default: MachineDataQA.NOT,
+        enumName: 'machine_data_qa_enum'
+    })
+    q3: MachineDataQA;
 
-    @Column()
-    q4: string;
+    @Column({
+        type: 'enum',
+        enum: MachineDataQA,
+        default: MachineDataQA.NOT,
+        enumName: 'machine_data_qa_enum'
+    })
+    q4: MachineDataQA;
 
-    @Column()
-    q5: string;
+    @Column({
+        type: 'enum',
+        enum: MachineDataQA,
+        default: MachineDataQA.NOT,
+        enumName: 'machine_data_qa_enum'
+    })
+    q5: MachineDataQA;
 
     @CreateDateColumn()
     created_at: Date;

@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class Migration1732128749209 implements MigrationInterface {
-    name = 'Migration1732128749209'
+export class Migration1732136765999 implements MigrationInterface {
+    name = 'Migration1732136765999'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`
@@ -16,12 +16,12 @@ export class Migration1732128749209 implements MigrationInterface {
         await queryRunner.query(`
             CREATE TABLE \`machine_data\` (
                 \`id\` int NOT NULL AUTO_INCREMENT,
-                \`date\` varchar(255) NOT NULL,
-                \`q1\` varchar(255) NOT NULL,
-                \`q2\` varchar(255) NOT NULL,
-                \`q3\` varchar(255) NOT NULL,
-                \`q4\` varchar(255) NOT NULL,
-                \`q5\` varchar(255) NOT NULL,
+                \`date\` datetime NOT NULL DEFAULT '2024-11-21 03:06:06',
+                \`q1\` enum ('yes', 'no', 'not') NOT NULL DEFAULT 'not',
+                \`q2\` enum ('yes', 'no', 'not') NOT NULL DEFAULT 'not',
+                \`q3\` enum ('yes', 'no', 'not') NOT NULL DEFAULT 'not',
+                \`q4\` enum ('yes', 'no', 'not') NOT NULL DEFAULT 'not',
+                \`q5\` enum ('yes', 'no', 'not') NOT NULL DEFAULT 'not',
                 \`created_at\` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
                 \`machine_id\` int NULL,
                 \`user_id\` int NULL,
@@ -36,8 +36,8 @@ export class Migration1732128749209 implements MigrationInterface {
                 \`email\` varchar(255) NOT NULL,
                 \`phone\` varchar(255) NOT NULL,
                 \`password\` varchar(255) NOT NULL,
-                \`last_login\` datetime NOT NULL,
-                \`last_pass_update\` datetime NOT NULL,
+                \`last_login\` datetime NULL,
+                \`last_pass_update\` datetime NULL,
                 \`created_at\` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
                 PRIMARY KEY (\`id\`)
             ) ENGINE = InnoDB

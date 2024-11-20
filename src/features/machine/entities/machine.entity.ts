@@ -1,5 +1,5 @@
 import { MachineType } from "../enums/machine-type.enum";
-import { MachineData } from "features/machine-data/entities/machine-data.entity";
+import { MachineData } from "../../machine-data/entities/machine-data.entity";
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('machines')
