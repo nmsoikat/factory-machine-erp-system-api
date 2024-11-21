@@ -6,16 +6,17 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
 
-  // StartSwagger
+  // Start Swagger
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('A factory machine ERP system')
+    .setDescription('a factory machine ERP system api')
     .setVersion('1.0')
-    .addTag('cats')
+    .addTag('api')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
 
+  // Server listen
   await app.listen(3000);
 }
 bootstrap();
