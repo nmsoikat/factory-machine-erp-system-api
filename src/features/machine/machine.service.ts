@@ -14,7 +14,8 @@ export class MachineService {
     ) { }
 
     async create(createMachineDto: CreateMachineDto) {
-        return await this.machineRepository.create(createMachineDto)
+        const machine = this.machineRepository.create(createMachineDto)
+        return await this.machineRepository.save(machine);
     }
 
     async findAll(query) {

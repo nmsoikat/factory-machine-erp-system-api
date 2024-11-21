@@ -3,7 +3,6 @@ import { Machine } from "../../machine/entities/machine.entity";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { MachineDataQA } from "../enums/machine-data-qa.enum";
 import * as moment from "moment";
-import { ApiProperty } from "@nestjs/swagger";
 
 @Entity('machine_data')
 export class MachineData {
@@ -62,6 +61,5 @@ export class MachineData {
     q5: MachineDataQA;
 
     @CreateDateColumn()
-    @ApiProperty({ description: 'when record is created' })
     created_at: Date;
 }

@@ -20,7 +20,8 @@ export class MachineDataService {
     ) { }
 
     async create(createMachineDataDto: CreateMachineDataDto) {
-        return await this.machineDataRepository.create(createMachineDataDto)
+        const machineData = this.machineDataRepository.create(createMachineDataDto)
+        return await this.machineDataRepository.save(machineData);
     }
 
     async findAll(query) {

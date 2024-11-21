@@ -11,8 +11,8 @@ export class MachineController {
 
     @Post()
     @ApiResponse({ status: 201, description: 'The record has been successfully created.', type: CreateMachineDto })
-    create(@Body() createMachineDto: CreateMachineDto) {
-        return this.machineService.create(createMachineDto);
+    async create(@Body() createMachineDto: CreateMachineDto) {
+        return await this.machineService.create(createMachineDto);
     }
 
     @Get()
@@ -20,13 +20,13 @@ export class MachineController {
     @ApiQuery({ name: 'machine_name', required: false })
     @ApiQuery({ name: 'page', example: '1', default: '1', required: false })
     @ApiQuery({ name: 'limit', example: '20', default: '20', required: false })
-    findAll(@Query() query) {
-        return this.machineService.findAll(query);
+    async findAll(@Query() query) {
+        return await this.machineService.findAll(query);
     }
 
     @Get(':id')
     @ApiParam({ name: 'id', example: '1', required: true })
-    findOne(@Param('id') id: string) {
-        return this.machineService.findOne(+id);
+    async findOne(@Param('id') id: string) {
+        return await this.machineService.findOne(+id);
     }
 }

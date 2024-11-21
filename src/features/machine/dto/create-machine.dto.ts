@@ -8,6 +8,6 @@ export class CreateMachineDto {
     readonly machine_name: string;
 
     @IsEnum(MachineType)
-    @ApiProperty({ example: 'yes', enum: MachineType })
+    @ApiProperty({ example: 'maker', enum: MachineType })
     readonly machine_type: MachineType;
 }
