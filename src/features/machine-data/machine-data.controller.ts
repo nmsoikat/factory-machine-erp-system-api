@@ -1,23 +1,23 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { MachineDataService } from './machine-data.service';
 import { CreateMachineDataDto } from './dto/create-machine-data.dto';
 
 @Controller('machine-data')
 export class MachineDataController {
-  constructor(private readonly machineDataService: MachineDataService) { }
+    constructor(private readonly machineDataService: MachineDataService) { }
 
-  @Post()
-  create(@Body() createMachineDataDto: CreateMachineDataDto) {
-    return this.machineDataService.create(createMachineDataDto);
-  }
+    @Post()
+    async create(@Body() createMachineDataDto: CreateMachineDataDto) {
+        return await this.machineDataService.create(createMachineDataDto);
+    }
 
-  @Get()
-  findAll() {
-    return this.machineDataService.findAll();
-  }
+    @Get()
+    findAll(@Query() query) {
+        return this.machineDataService.findAll(query);
+    }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.machineDataService.findOne(+id);
-  }
+    @Get(':id')
+    findOne(@Param('id') id: string) {
+        return this.machineDataService.findOne(+id);
+    }
 }

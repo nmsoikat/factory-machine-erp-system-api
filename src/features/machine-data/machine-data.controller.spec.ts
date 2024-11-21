@@ -3,18 +3,18 @@ import { MachineDataController } from './machine-data.controller';
 import { MachineDataService } from './machine-data.service';
 
 describe('MachineDataController', () => {
-  let controller: MachineDataController;
+    let controller: MachineDataController;
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [MachineDataController],
-      providers: [MachineDataService],
-    }).compile();
+    beforeEach(async () => {
+        const module: TestingModule = await Test.createTestingModule({
+            controllers: [MachineDataController],
+            providers: [MachineDataService],
+        }).compile();
 
-    controller = module.get<MachineDataController>(MachineDataController);
-  });
+        controller = module.get<MachineDataController>(MachineDataController);
+    });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
-  });
+    it('should be defined', () => {
+        expect(controller).toBeDefined();
+    });
 });

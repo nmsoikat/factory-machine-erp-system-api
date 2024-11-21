@@ -1,6 +1,6 @@
 import { User } from "../../user/entities/user.entity";
 import { Machine } from "../../machine/entities/machine.entity";
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { MachineDataQA } from "../enums/machine-data-qa.enum";
 import * as moment from "moment";
 
@@ -9,10 +9,12 @@ export class MachineData {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(() => Machine, (machine) => machine.machine_data)
+    @ManyToOne(() => Machine, (machine_id) => machine_id.machine_data)
+    @JoinColumn({ name: "machine_id" })
     machine_id: Machine;
 
-    @ManyToOne(() => User, (user) => user.machine_data)
+    @ManyToOne(() => User, (user_id) => user_id.machine_data)
+    @JoinColumn({ name: "user_id" })
     user_id: User;
 
     @Column({ default: moment(new Date()).format("YYYY-MM-DD HH:mm:ss") })
